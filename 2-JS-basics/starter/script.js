@@ -244,3 +244,124 @@ switch (true) {
         console.log(firstName + ' is a man.');
 }
 */
+
+
+
+/*****************************
+* Truthy and Falsy values and equality operators
+*/
+// falsy values: undefined, null, 0, '', NaN
+// truthy values: NOT falsy values
+/*
+
+var height;
+
+height = 23;
+
+if (height || height === 0) {
+    console.log('Variable is defined');
+} else {
+    console.log('Variable has NOT been defined');
+}
+
+77 === '77' ? console.log("equals") : console.log("NOT equals");
+
+*/
+
+
+
+/*****************************
+* Function Statements and Expressions
+*/
+/*
+function whatDoYouDo(job, firstName) {
+    
+}
+/*
+var whatDoYouDo = function(job, firstName) {
+    switch (job) {
+        case 'teacher':
+            return firstName + ' teaches kids how to code';
+
+        case 'driver':
+            return firstName + ' drives a cab in Lisbon';
+
+        case 'designer':
+            return firstName + ' designs beautiful websites';
+
+        default:
+            return firstName + ' does something else';
+    }
+}
+
+console.log(whatDoYouDo('teacher', 'John'));
+*/
+
+
+
+/*****************************
+* Arrays
+*/
+/*
+// Initialize new array
+var names = ['John', 'Mark', 'Jane'];
+var years = new Array(1990, 1969, 1948);
+
+console.log(names);
+
+//Mutate array data
+names[1] = 'Ben';
+console.log(names);
+
+names[names.length] = 'Mary';
+console.log(names);
+*/
+/*
+//Different data types
+var john = ['John', 'Smith', 1990, 'teacher', false];
+
+john.push('blue');
+john.unshift('Mr.');
+console.log(john);
+
+john.pop();
+john.pop();
+john.shift();
+console.log(john);
+
+console.log(john.indexOf(23));
+
+var isDesigner = john.indexOf('designer') === -1 ? 'John is NOT a designer' : 'John is a designer';
+console.log(isDesigner);
+
+*/
+
+
+
+/*****************************
+* Objects and properties
+*/
+// Object literal
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false
+};
+
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
+
+john.job = 'designer';
+john['isMarried'] = true;
+console.log(john);
+
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
