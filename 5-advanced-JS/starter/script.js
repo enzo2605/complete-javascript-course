@@ -310,7 +310,7 @@ console.log(japan);
 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the 
    other programmers code (Hint: we learned a special technique to do exactly that).
 */
-
+/*
 (function () {
     //1.
     function Question(question, answers, correct) {
@@ -355,19 +355,83 @@ console.log(japan);
     //6.
     questions[n].checkAnswer(ans);
 })();
-
+*/
 /*
 --- Expert level ---
 
-8. After you display the result, display the next random question, so that the game never ends (Hint: write a function for this and call it right 
-   after displaying the result)
+8. After you display the result, display the next random question, so that the game never ends 
+   (Hint: write a function for this and call it right after displaying the result)
 
-9. Be careful: after Task 8, the game literally never ends. So include the option to quit the game if the user writes 'exit' instead of the answer. 
-   In this case, DON'T call the function from task 8.
+9. Be careful: after Task 8, the game literally never ends. So include the option to quit the game 
+   if the user writes 'exit' instead of the answer. In this case, DON'T call the function from task 8.
 
-10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score (Hint: I'm going to use the power 
-   of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
+10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score 
+    (Hint: I'm going to use the power  of closures for this, but you don't have to, just do this with the tools you 
+    feel more comfortable at this point).
 
 11. Display the score in the console. Use yet another method for this.
 
 */
+
+(function () {
+
+    var score = 0;
+
+    //1.
+    function Question(question, answers, correct) {
+        this.question = question;
+        this.answers = answers;
+        this.correct = correct;
+    }
+
+    //4.
+    Question.prototype.displayQuestion = function() {
+        
+        console.log(this.question);
+
+        for (var i = 0; i < this.answers.length; i++) {
+            console.log(i + ': ' + this.answers[i]);
+        }
+    }
+
+    //6.
+    Question.prototype.checkAnswer = function (ans) {
+        if(ans === this.correct) {
+            score++;
+            console.log('Correct!');
+            console.log('Score: '+ score);
+        }
+        else {
+            console.log('Wrong.');
+            console.log('Score: ' + score);
+        }
+    }
+
+    //2.
+    var q1 = new Question('Is Naples in Italy?', ['Yes', 'No'], 0);
+    var q2 = new Question('What\'s my name?', ['Luca', 'Giovanni', 'Vincenzo'], 2);
+    var q3 = new Question('How old am I?', ['22', '30', '21'], 2);
+
+    //3.
+    var questions = [q1, q2, q3];
+
+    function next() {
+        //4.
+        var n = Math.floor(Math.random() * questions.length);
+        questions[n].displayQuestion();
+
+        //5.
+        var ans = prompt('Select the correct answer');
+
+        //8-9
+        if(ans !== 'exit') {
+            //6.
+            questions[n].checkAnswer(parseInt(ans));
+            next();
+        }
+
+    }
+
+    next();
+    
+})();
